@@ -39,8 +39,9 @@ export async function updateSession(request: NextRequest) {
   const isAdminPath =
     pathname.startsWith('/admin') || pathname.startsWith('/api/admin');
   const isLoginPage = pathname === '/admin/login';
+  const isLoginApi = pathname === '/api/admin/auth/login';
 
-  if (isAdminPath && !isLoginPage && !user) {
+  if (isAdminPath && !isLoginPage && !isLoginApi && !user) {
     const loginUrl = request.nextUrl.clone();
     loginUrl.pathname = '/admin/login';
     return NextResponse.redirect(loginUrl);
