@@ -14,7 +14,7 @@ export function useAdminNotices(search?: string) {
       const res = await fetch(`/api/admin/notices?${params}`)
       if (!res.ok) throw new Error('공지 목록을 불러오지 못했습니다')
       const json = await res.json()
-      return json.data as NoticeListItem[]
+      return json.data.notices as NoticeListItem[]
     },
     staleTime: 5 * 60 * 1000,
   })
@@ -28,7 +28,7 @@ export function useAdminNotice(id: number) {
       const res = await fetch(`/api/admin/notices/${id}`)
       if (!res.ok) throw new Error('공지를 불러오지 못했습니다')
       const json = await res.json()
-      return json.data as Notice
+      return json.data.notice as Notice
     },
     enabled: !!id,
   })

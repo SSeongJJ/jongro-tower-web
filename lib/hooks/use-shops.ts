@@ -15,7 +15,7 @@ export function useAdminShops(search?: string, floor?: Floor) {
       const res = await fetch(`/api/admin/shops?${params}`)
       if (!res.ok) throw new Error('매장 목록을 불러오지 못했습니다')
       const json = await res.json()
-      return json.data as Shop[]
+      return json.data.shops as Shop[]
     },
     staleTime: 5 * 60 * 1000,
   })
@@ -29,7 +29,7 @@ export function useAdminShop(id: number) {
       const res = await fetch(`/api/admin/shops/${id}`)
       if (!res.ok) throw new Error('매장 정보를 불러오지 못했습니다')
       const json = await res.json()
-      return json.data as Shop
+      return json.data.shop as Shop
     },
     enabled: !!id,
   })

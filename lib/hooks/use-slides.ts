@@ -11,7 +11,7 @@ export function useAdminSlides() {
       const res = await fetch('/api/admin/slides')
       if (!res.ok) throw new Error('슬라이드 목록을 불러오지 못했습니다')
       const json = await res.json()
-      return json.data as Slide[]
+      return json.data.slides as Slide[]
     },
     staleTime: 5 * 60 * 1000,
   })

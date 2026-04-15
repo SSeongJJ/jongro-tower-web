@@ -11,7 +11,7 @@ export function useAdminFloorMaps() {
       const res = await fetch('/api/admin/floor-maps')
       if (!res.ok) throw new Error('도면 목록을 불러오지 못했습니다')
       const json = await res.json()
-      return json.data as FloorMap[]
+      return json.data.floorMaps as FloorMap[]
     },
     staleTime: 60 * 60 * 1000, // 1시간
   })
